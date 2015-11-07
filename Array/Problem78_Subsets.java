@@ -42,6 +42,7 @@ public class Problem78_Subsets {
     }
     
     public List<List<Integer>> subsets_bitManipulation(int[] nums) {
+    	res = new ArrayList<>();
     	Arrays.sort(nums);
     	List<List<Integer>> res = new ArrayList<>();
     	for(int i = 0; i < Math.pow(2, nums.length); i++){
