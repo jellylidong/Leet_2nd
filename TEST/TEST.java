@@ -1,32 +1,47 @@
 
 public class TEST {
-	public static boolean exist(char[][] board, String word) {
-        for(int i = 0; i < board.length; i++){
-            for(int j = 0; j < board[0].length; j++){
-                if(exist(board, i, j, word, 0));
-                    return true;
+	public static int maxProfit(int[] p) {
+        int k = 2;
+        int l = p.length;
+        if(l <= 1)
+            return 0;
+        int[][] profit = new int[k+1][l];
+        int res = 0;
+        
+        for(int i = 1; i <= k; i++){
+            int tmpMax = profit[k-1][0] - p[0];
+            
+            for(int j = 1; j < p.length; j++){
+                profit[k][j] = Math.max(profit[k][j-1], p[j]+tmpMax);
+                tmpMax = Math.max(tmpMax, profit[k-1][j] - p[j]);
+                res = Math.max(res, profit[k][j]);
+                //System.out.println(profit[k][j-1] + " " + p[j]+" " +tmpMax + " " +res);
             }
         }
-        return false;
-    }
-    
-    public static boolean exist(char[][] board, int x, int y, String word, int i){
-        if(i == word.length())
-            return true;
-        if( x < 0 || y < 0 || x == board.length || y == board[0].length)
-            return false;
-        if(board[x][y] != word.charAt(i))
-            return false;
-        board[x][y] ^= 256;
-        boolean res = exist(board, x, y+1, word, i+1) ||
-                      exist(board, x, y-1, word, i+1) ||
-                      exist(board, x-1, y, word, i+1) ||
-                      exist(board, x+1, y, word, i+1);
-        board[x][y] ^= 256;
         return res;
     }
     
+	public static int maxProfit2(int[] prices) {
+		if (prices.length <= 1) return 0;
+        else {
+            int K = 2; // number of max transation allowed
+            int maxProf = 0;
+            int[][] f = new int[K+1][prices.length];
+            
+            for (int kk = 1; kk <= K; kk++) {
+                int tmpMax = f[kk-1][0] - prices[0];
+                
+                for (int ii = 1; ii < prices.length; ii++) {
+                    f[kk][ii] = Math.max(f[kk][ii-1], prices[ii] + tmpMax);
+                    tmpMax = Math.max(tmpMax, f[kk-1][ii] - prices[ii]);
+                    maxProf = Math.max(f[kk][ii], maxProf);
+                }
+            }
+            return maxProf;
+        }
+	}
     public static void main(String[] args){
-    	Trie trie = new Trie();
+    	int[] p = {2,1,2,0,1};
+    	System.out.print(maxProfit2(p));
     }
 }
