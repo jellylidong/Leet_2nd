@@ -47,9 +47,4 @@ public class Probelm59_Spiral_Matrix_II {
     }
 }
 //randomly input to test git
-//NOT WORKING, TRY AGAIN
-//AGAIN
-//AGAIN
-//again
-//nima
-//last try
+//
