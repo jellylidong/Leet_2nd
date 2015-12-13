@@ -17,26 +17,26 @@ public class Probelm59_Spiral_Matrix_II {
         int up = 0;
         int down = n-1;
         int[][] res = new int[n][n];
-        
+
         while(val <= n*n){
             for(int i = left; val <= n*n && i <= right; i++){
                 res[up][i] = val;
                 val++;
             }
             up++;
-            
+
             for(int i = up; val <= n*n && i <= down; i++){
                 res[i][right] = val;
                 val++;
             }
             right--;
-            
+
             for(int i = right; val <= n*n && i >= left; i--){
                 res[down][i] = val;
                 val++;
             }
             down--;
-            
+
             for(int i = down; val <= n*n && i >= up; i--){
                 res[i][left] = val;
                 val++;
@@ -46,3 +46,4 @@ public class Probelm59_Spiral_Matrix_II {
         return res;
     }
 }
+//randomly input to test git
