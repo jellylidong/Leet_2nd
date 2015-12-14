@@ -34,6 +34,7 @@ public class Problem259_3Sum_Smaller {
 			int hi = nums.length-1;
 			while(lo < hi){
 				if(nums[i] + nums[lo] + nums[hi] < target){
+					//easy to make mistake, not add 1 !!!!
 					count += hi - lo;
 					lo++;
 				}
