@@ -47,7 +47,7 @@ public class Problem84_LargestRectangle_in_Histogram {
         		if(s.empty())
         			area = h*i;
         		else
-        			area = h*(i-s.pop()-1);
+        			area = h*(i-s.peek()-1);
         		maxArea = Math.max(maxArea, area);
         	}
         }
