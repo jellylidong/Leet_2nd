@@ -37,10 +37,11 @@ public class Problem224_BasicCalculator {
 				num = 0;
 				sign = -1;
 			}
+			/*( can only happen after + or -, so num has alreay been set to 0*/
 			else if(c == '('){
 				stack.push(res);
 				stack.push(sign);
-				num = 0;
+				res = 0;
 				sign = 1;
 			}
 			else if(c == ')'){
