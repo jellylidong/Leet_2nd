@@ -36,7 +36,7 @@ Your algorithm should run in O(n) complexity.*/
  * this works because for any single node that has no left or right,
  * its value will be 1
  * for other cases, both left boundary and right boundary will be updated
- * notice before update boundary we already get the current value
+ * notice before update boundary we already get the current max value
  * let's see this case
  * 2,2,_,1, when the number of third position comes, it will change to
  * 4,2,4,4
