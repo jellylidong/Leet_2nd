@@ -22,11 +22,12 @@
  * let x is the length of numbers before m1 (not include)
  * let y is the length of nuimber before m2 (not include)
  * 
- * so there are at least x+y+1 numbers before nums[m2], the 1 means nums1[m1]
- *    there are at least (e1-m1+1-1) + (e2-m2+1) nuimbers after nums[m1]
+ * so there are at least x+y+1 numbers before nums[m2], the +1 means nums1[m1]
+ *    there are at least (e1-m1+1-1) + (e2-m2+1) nuimbers after nums[m1]. the -1 means nums1[m1]
  *    
  * 1.so if k <= (x+y+1), 
  * it means the median is < num2[m2], but we can not know if the median also < nums1[m1]
+ * so the target number can be in the whole nums1, but only the part of num2 before m2,
  * i.e. we can find this number from nums1's s1 to e1(inclusive) 
  * and nums2's s2 to m2(not inclusive)
  * else k > (x+y+1)

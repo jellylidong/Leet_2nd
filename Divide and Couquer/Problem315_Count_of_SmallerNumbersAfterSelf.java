@@ -23,7 +23,7 @@ Hide Tags Divide and Conquer Binary Indexed Tree Segment Tree Binary Search Tree
  * we need to build a binary search tree
  * where for each tree node, it has 
  * val: (this number), 
- * sum: the total numbber of left nodes this node's left tree
+ * sum: the total number of left nodes this node's left tree
  * dup: the number of this node itself
  * for each value we can get the number at its right and smaller it by
  * add up all the sum and dup when we go right (include the tree root node)
@@ -54,6 +54,8 @@ Hide Tags Divide and Conquer Binary Indexed Tree Segment Tree Binary Search Tree
  *  	   \
  *  	    5,(0,1) ans[0] = 0+1  + 0+1 = 2 (node 2 and 1)
  *  */
+
+/*method 2 merge sort based search*/
 
 import java.util.*;
 

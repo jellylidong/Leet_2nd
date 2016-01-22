@@ -43,7 +43,7 @@ There must be no consecutive horizontal lines of equal height in the output skyl
 
 /*my analysis
  * let's start at an example
- * given two points [x1, x2, h]:
+ * given two points in the form of [x1, x2, h]:
  * p1 = [0, 2, 3] and p2 = [1, 3, 1]
  * separate the point as the following format for convenience [x1,h1], [x2, 0]
  * so we have 
@@ -56,7 +56,7 @@ There must be no consecutive horizontal lines of equal height in the output skyl
  * h1 and h2 are only updated when the list they belong to are used
  * and maxH to trace current max height
  * 1: [0,3]:
- * h1 = 3, h2 = h, maxH = 3, so res = {[0,2]}
+ * h1 = 3, h2 = 0, maxH = 3, so res = {[0,2]}
  * 2: [1,1]
  * h1 = 3, h2 = 1, maxH = 3, since maxH is not changed, 
  * we don't need to put this point to the results

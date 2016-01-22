@@ -1,9 +1,9 @@
 /*Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
 
 According to the definition of LCA on Wikipedia: 
-“The lowest common ancestor is defined between two nodes v and w 
+â€œThe lowest common ancestor is defined between two nodes v and w 
 as the lowest node in T that has both v and w as descendants 
-(where we allow a node to be a descendant of itself).”
+(where we allow a node to be a descendant of itself).â€�
 
         _______3______
        /              \
@@ -18,7 +18,13 @@ since a node can be a descendant of itself according to the LCA definition.*/
 
 /*my analysis
  * remember the code
- * see the comment of the code*/
+ * see the comment of the code
+ * 
+ * another solution is
+ * first inorder traversal the tree and store the results in
+ * then post order traversal the tree and store the results post
+ * then find the number between the two node of in
+ * the the number has biggest index of post is the LCA*/
 public class Problem236_LowestCommonAncestor_of_a_BinaryTree {
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 		
