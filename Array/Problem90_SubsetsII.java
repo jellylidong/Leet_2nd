@@ -19,21 +19,21 @@ If nums = [1,2,2], a solution is:
 
 /*note: for method 2
  * the size of result list must be get before loop the count
- * because we are updating the res in the loop, 
- * if get size in the loop, the loop will never end!!!!!!!*/ 
+ * because we are updating the res in the loop,
+ * if get size in the loop, the loop will never end!!!!!!!*/
 public class Problem90_SubsetsII {
 	//the time is terrible long!
 	List<List<Integer>> res;
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         Arrays.sort(nums);
-        
+
         res = new ArrayList<>();
         List<Integer> list = new ArrayList<>();
         res.add(new ArrayList(list));
         subsetsWithDup(nums, 0, list);
         return res;
     }
-    
+
     public void subsetsWithDup(int[] nums, int start, List<Integer> list){
         for(int i = start; i < nums.length; i++){
             list.add(nums[i]);
@@ -43,7 +43,7 @@ public class Problem90_SubsetsII {
             list.remove(list.size() - 1);
         }
     }
-    
+
     //first add an empty set
     //then for every iteration
     //if dup plicate happens

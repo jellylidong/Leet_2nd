@@ -38,7 +38,7 @@ even the first room the knight enters and the bottom-right room where the prince
 * most cases, problem is difficult because going forward cause
 * undicided branches, while going backward can avoid these braches
 *
-* in this problem, we are require the hp value should be at least 1
+* in this problem, we are require the hp value should be at least 1 in the final position,
 * so we can start from the last point, i.e. the hp[r-1][c-1] = max(1, 1-d[r-1][c-1]
 *
 * at any point d[i][j],

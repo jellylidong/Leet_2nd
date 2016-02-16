@@ -44,4 +44,30 @@ public class Problem39_CombinationSum {
 				lists.add(new ArrayList<>(list));
 		}
 	}
+
+	/*method 2*/
+	List<List<Integer>> ans;
+	public List<List<Integer>> combinationSum(int[] nums, int t) {
+		Arrays.sort(nums);
+		ans = new ArrayList<>();
+		List<Integer> sol = new ArrayList<>();
+		solve(nums, sol, t, 0);
+		return ans;
+	}
+
+	public void solve(int[] nums, List<Integer> sol, int t, int start){
+		if(t == 0){
+			ans.add(new ArrayList<>(sol));
+			return;
+		}
+		if(t < 0)
+			return;
+		for(int i = start; i < nums.length; i++){
+			if(i > start && nums[i] == nums[i-1])
+				continue;
+			sol.add(nums[i]);
+			solve(nums, sol, t-nums[i], i); //here is i, not 0
+			sol.remove(sol.size()-1);
+		}
+	}
 }

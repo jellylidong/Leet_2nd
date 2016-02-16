@@ -7,7 +7,7 @@
  * what make it hard is for we are given a linkedlist, which makes
  * it use O(i) to access the ith element
  * 
- * to solve this, we set a curNode to pointe at the current node we are accessing
+ * to solve this, we set a curNode to point at the current node we are accessing
  * remember the code and idea*/
 public class Problem109_ConvertSortedList_to_BinarySearchTree {
 	ListNode curNode;

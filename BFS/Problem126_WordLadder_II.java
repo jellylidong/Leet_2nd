@@ -26,6 +26,15 @@ All words contain only lowercase alphabetic characters.*/
  *BFS to build a graph util find endWord
 	at the same time record the level of each node
 	fs until the level to find all the pathes*/
+
+/*method 2
+similar to method 1, we need to generate a graph that has key =  some word and val =  a list of children words
+to build the graph:
+* use two sets, one set is used to go forward, i.e we generate all possible children words
+* from this set, the other one is used to go backward, i.e we generate possible parents words
+* from this set, once the two set have common words, the graph is build up for the shortest path
+* from begin word to end word*/
+
 public class Problem126_WordLadder_II {
 	 public List<List<String>> findLadders(String begin, String end, Set<String> dict) {
 	        
@@ -123,4 +132,93 @@ public class Problem126_WordLadder_II {
 	        }
 	        sol.remove(sol.size()-1);                
 	    }
+
+	public List<List<String>> findLadders_method_2(String begin, String end, Set<String> dict) {
+		HashSet<String> s1 = new HashSet<>();
+		HashSet<String> s2 = new HashSet<>();
+
+		//forward set has begin word intially
+		//backward set has end word initially
+		s1.add(begin);
+		s2.add(end);
+
+		HashMap<String, ArrayList<String>> graph = new HashMap<>();
+		buildMap(s1, s2, dict, graph, false);
+
+		//ans the is finally answer
+		//sol store each solution, i.e the shortest path
+		List<List<String>> ans = new ArrayList<>();
+		ArrayList<String> sol = new ArrayList<>();
+		sol.add(begin); // each sol must begi with begin word
+
+		genList(graph, begin, end, ans, sol);
+		return ans;
+	}
+
+	public boolean buildMap(HashSet<String> s1, HashSet<String> s2, Set<String> dict, HashMap<String, ArrayList<String>> graph, boolean flip){
+		if(s1.isEmpty())
+			return false;
+
+		//no mater forward or backward, we need to seach if one set's element is in the other
+		//that is the total time complexity is size1 * size2
+		//? the less difference the two sizes has, the faster they will run
+		//without this part, we can still get correct results but a little slower
+		if(s1.size() > s2.size())
+			return buildMap(s2, s1, dict, graph, !flip);
+
+		//we don't need to search these word any more once these word are visited
+		dict.removeAll(s1);
+		dict.removeAll(s2);
+
+		//done is used to indicate that two sets are crossed
+		boolean done = false;
+		//newS is used to store the newly generated children or parents
+		HashSet<String> newS = new HashSet<>();
+		for(String str: s1){
+			char[] cs = str.toCharArray();
+			for(int i = 0; i < cs.length; i++){
+				char pre = cs[i];
+				for(char c = 'a'; c <= 'z'; c++){
+					cs[i] = c;
+					String newStr = new String(cs);
+
+					//flip is used to indicate we are going forward or backward
+					//if flip == false, we are going forward,
+					//so the key is the original str, and val is the newly generated newStr
+					//vice versa
+					String key = flip? newStr: str;
+					String val = flip? str: newStr;
+
+					ArrayList<String> list = graph.containsKey(key) ? graph.get(key) : new ArrayList<String>();
+					if(s2.contains(newStr)){//check if the two set crossed
+						done = true;
+						list.add(val);
+						graph.put(key, list);
+					}
+
+					if(!done && dict.contains(newStr)){
+						newS.add(newStr);
+						list.add(val);
+						graph.put(key, list);
+					}
+				}
+				cs[i] = pre;
+			}
+		}
+
+		return done || buildMap(s2, newS, dict, graph, !flip);
+	}
+
+	public void genList(HashMap<String, ArrayList<String>> graph, String begin, String end, List<List<String>> ans, ArrayList<String> sol){
+		if(begin.equals(end)){
+			ans.add(new ArrayList<String>(sol));
+		}
+		else if(graph.containsKey(begin)){
+			for(String str: graph.get(begin)){
+				sol.add(str);
+				genList(graph, str, end, ans, sol);
+				sol.remove(sol.size()-1);
+			}
+		}
+	}
 }
