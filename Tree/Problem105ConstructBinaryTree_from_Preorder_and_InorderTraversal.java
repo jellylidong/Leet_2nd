@@ -6,7 +6,7 @@ You may assume that duplicates do not exist in the tree.*/
 
 /*my analysis
  * http://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
- * norder sequence: D B E A F C
+ * inorder sequence: D B E A F C
 Preorder sequence: A B D E C F
 
 In a Preorder sequence, leftmost element is the root of the tree. 

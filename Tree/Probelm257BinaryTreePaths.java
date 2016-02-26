@@ -13,7 +13,9 @@ All root-to-leaf paths are:
 
 ["1->2->5", "1->3"]*/
 
-/*remember the code !!!!!!1*/
+/*remember the code !!!!!!1
+* only add new path when current node has no children
+* having child(ren) means current node is not a leaf node*/
 
 public class Probelm257BinaryTreePaths {
 	List<String> pathes;

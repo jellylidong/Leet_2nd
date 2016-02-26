@@ -12,14 +12,14 @@ which has length = 4.*/
 
 /*method_1 stack, On space and On time
  *go through each char from beginning to end
- *if this char s.charAt(i) is ) and can be paried with the top of stack
+ *if this char s.charAt(i) is ) and can be paired with the top of stack
  *s.pop()
  *else
  *first update max:
  *	if stack is empty, it means all parentheses are valid
  *		so max = Math.max(max, i)
  *	if not empty
- *		max = Math.max(max, i-1.stack.peek())
+ *		max = Math.max(max, i-1-stack.peek())
  *second push this unpaired s.charAt(i)*/
 
 /*method_2 DP， use an array ll to keep track of the length end with charAt(i). i.e ll[i]
@@ -57,8 +57,11 @@ public class Problem32_Longest_Valid_Parentheses {
 			if(s.charAt(i) == ')'){
 				if(s.charAt(i-1) == '(')
 					ll[i] = i-2>=0? ll[i-2]+2: 2;
-				else if(s.charAt(i) == ')' && i-1-ll[i-1]>=0 && s.charAt(i-1-ll[i-1]) == '(')
+				else if(s.charAt(i-1) == ')' && i-1-ll[i-1]>=0 && s.charAt(i-1-ll[i-1]) == '(')
 					ll[i] = ll[i-1] + 2 + (i-1-ll[i-1]-1>=0? ll[i-1-ll[i-1]-1]: 0);
+				//ll[i-1] is the len previous part
+				//2 is the newly paired length
+				//ll[i-1-ll[i-1]-1] is the length of the left part of s.charAt(i-1-ll[i-1])
 			}
 			max = Math.max(max, ll[i]);
 		}

@@ -29,12 +29,26 @@ each node's right child points to the next node of a pre-order traversal.*/
 /*my analysis
  * remember the code!!!!!!
  * for a tree like
- *       1		
+ *       1		initially pre = null,
         / \		
-       2   5	
+       2   5	root.right = pre, then pre = 5
        
- * 
- * try to do similar in-place transform like inorder and postorder*/
+ * ==>
+ * 		1
+ * 	  /
+ * 	 2
+ * 	 \
+ * 	  5 root.right = pre, then pre = 2
+ * ==>
+ * 1 root.right = pre, then pre = 1
+ *  \
+ *   2
+ *    \
+ *     5
+ * try to do similar in-place transform like inorder and postorder
+ *
+ * The pre is the code is used to record the root of current subtree
+ * which will be the right node of its upper subtree*/
 public class Problem114_FlattenBinaryTreetoLinkedList {
 	TreeNode pre = null;
     public void flatten(TreeNode root) {

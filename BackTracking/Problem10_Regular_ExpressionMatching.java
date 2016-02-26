@@ -23,7 +23,8 @@ isMatch("aab", "c*a*b") → true*/
 
 /*my analysis
 * we can use a 2d array to record the match
-* match[i][j] mean s.substring(0, i) matches p.charAt(0, j) or not
+* match[i][j] mean s.substring(0, i) matches p.substring(0, j) or not
+* i, j  are the end of each string, not included
 * first we need to initial the array
 * match[0][0] = true because empty string matches empty string
 * match[i][0] = false, because non-empty string doesn't match empty string
@@ -56,10 +57,19 @@ public class Problem10_Regular_ExpressionMatching {
         //i, j  are the end of each string, not included
         for(int i = 1; i <= s.length(); i++){
             for(int j = 1; j <= p.length(); j++){
-                if(p.charAt(j-1) != '*')
+                if(p.charAt(j-1) != '*') //only the end char can match
                     match[i][j] = match[i-1][j-1] && (p.charAt(j-1) == '.' || p.charAt(j-1) == s.charAt(i-1));
                 else
+                    //1. * stands for 0 preceding
                     match[i][j] = match[i][j-2] ||
+                            //2. * stands for >= 1 precedings
+                            //explain:
+                            //if match[i-1][j] == true, assume that by now * stands for n precedings
+                            //note that the position of [i-1][j] for * is j-1, for char of s is i-2
+                            //now comes the i-1 th char, if we need it matches,
+                            //i.e we need * stands for n+1 preceding,
+                            // the i-1 th char should == *'s preceding
+                            //so we must have p.charAt(j-2) == '.' || p.charAt(j-2) == s.charAt(i-1))
                             (match[i-1][j] && (p.charAt(j-2) == '.' || p.charAt(j-2) == s.charAt(i-1)));
             }
         }

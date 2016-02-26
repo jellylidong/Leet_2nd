@@ -41,6 +41,7 @@ public class Probelm99_RecoverBinarySearchTree {
 	public void traverse(TreeNode root){
 		if(root == null)
 			return;
+		traverse(root.left);
 		if(pre != null){
 			if(t1 == null && pre.val > root.val)
 				t1 = pre;

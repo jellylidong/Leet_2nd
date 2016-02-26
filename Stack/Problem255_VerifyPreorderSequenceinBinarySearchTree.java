@@ -11,7 +11,7 @@ Could you do it using only constant space complexity?*/
 /*my analysis
  * method 1 divide and conquer(this method is easy to understand but run time is poor)
  * for any tree or subtree's preorder traversal
- * it must be composed by thre parts
+ * it must be composed by three parts
  * root,[left subtree preorder], [right subtring preorder]
  * what we need to do is to find the index of start of right subtree
  * make sure all numbers in left subtree < node

@@ -23,6 +23,7 @@
       <sourceFolder url="file://$MODULE_DIR$/BinarySearch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BinaryIndexTree" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/PriorityQueue and Heap" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Design" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
