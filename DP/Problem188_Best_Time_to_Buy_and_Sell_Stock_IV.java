@@ -17,7 +17,7 @@ You may not engage in multiple transactions at the same time
 * i.e. prof += p[i]-p[i-1]
 *
 * if k < len/2:
-* prof[i][j] means the profit of ith transaction up to time j
+* prof[i][j] means the profit of ith transaction up to day j
 * more details see the code
 * */
 

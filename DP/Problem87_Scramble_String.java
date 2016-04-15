@@ -72,6 +72,9 @@ public class Problem87_Scramble_String {
                           (isScramble(s11, s23) && isScramble(s12, s24)) ||
                           (isScramble(s11, s22) && isScramble(s12, s21)) ||
                           (isScramble(s11, s24) && isScramble(s12, s23));
+
+            //note, once find, must return so that we don't have to search further,
+            // otherwise we can get wrong result
             if(res)
                 return true;
         }

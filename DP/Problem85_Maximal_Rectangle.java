@@ -56,6 +56,8 @@ public class Problem85_Maximal_Rectangle {
                 if(m[i][j] == '1')  left[j] = Math.max(left[j], curLeft);
                 else {left[j] = 0; curLeft = j+1;} // note how to update curLeft and curRight
             }
+
+            //!!!!!!right side must start from right most
             for(int j = x-1; j >= 0; j--){// note: compute riht[] from right to left
                 if(m[i][j] == '1')  right[j] = Math.min(right[j], curRight);
                 else {right[j] = x-1; curRight = j-1;}

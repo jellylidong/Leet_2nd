@@ -64,12 +64,12 @@
 //        Queue<Integer> pq = new PriorityQueue<>((a,b) -> (b-a));
 //        pq.offer(0);
 //        int pre = 0;
-//        for(int[] p: height){
+//        for(int[] h: height){
 //            if(h[1] < 0) {//for the height of star point, put it to the queue
 //                pq.offer(-h[1]);
 //            }
 //            else{
-//                pq.remove(h[-1]);
+//                pq.remove(h[1]);
 //            }
 //            int cur = pq.peek();
 //            if(cur != pre){

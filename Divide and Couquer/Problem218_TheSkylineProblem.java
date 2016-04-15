@@ -128,7 +128,7 @@ public class Problem218_TheSkylineProblem {
 					l1.remove(0);
 					l2.remove(0);
 				}
-				if(res.size() == 0 || h != preH){
+				if(res.size() == 0 || h != preH){//max h is changed, so we need to add new node to res
 					res.add(new int[] {x, h});
 	    			preH = h;
 				}
